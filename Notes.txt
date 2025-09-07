@@ -1,0 +1,14 @@
+-----NavBar
+bg-color	21, 128, 61, 1		#15803d
+button		250, 204, 21, 1		#facc15
+
+
+-------Plant a Tree, Grow a Future Sectio
+bg color		207, 240, 220, 1	#cff0dc
+heading txt color	31, 41, 55, 1		#1f2937
+
+--------choose your trees
+bg color 		240, 253, 244, 1	#f0fdf4
+
+-------- our impact
+background: 		207, 240, 220, 1	#cff0dc
