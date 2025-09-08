@@ -1,3 +1,26 @@
 .inter-fnt {
   font-family: "Inter", sans-serif;  
 }
+
+.cagetory-normal{
+  color: #1f2937;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px;
+  border-radius: 5px;
+  margin-top: 10px;   
+}
+.cagetory-normal:hover{
+  color: white;
+  background-color: #15803d;
+}
+
+.cagetory-selected{
+  color: white;
+  background-color: #15803d;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px;
+  border-radius: 5px;
+  margin-top: 10px;   
+}
