@@ -26,19 +26,37 @@ const activateCatagory = (id)=>{
     liToActivate.classList.add("cagetory-selected");
 };
 
+const updateCartTotal = (itemPrice, cartId) =>{
+    if(itemPrice<0){
+        const cartItem = document.getElementById(cartId);
+            cartItem.remove();
+        }
+    console.log(cartId);
+    const cartTotal = document.getElementById("cart-total");
+    const currBalance = parseInt(cartTotal.innerText);
+    const newBalance = currBalance+itemPrice;
+    cartTotal.innerText=newBalance;   
+};
+    
+
+let i=0;
 const addCartItem = (pName, pPrice) =>{
     //
+    i++;
     const cartContainer = document.getElementById("cart-container");
+    //
+    let cartTotal = parseInt(document.getElementById("cart-total").innerText);
+    
     //
     const cartItem =document.createElement("div");
     cartItem.innerHTML=`
     
-    <div id="cart-item" class="flex justify-between items-center bg-[#8abf9e] w-full p-[5px] rounded-2xl mt-[5px]">
+    <div id="cart-item-id-${i}" class="flex justify-between items-center bg-[#8abf9e] w-full p-[5px] rounded-2xl mt-[5px]">
                         <div class="">
                             <p class="font-bold pl-[15px]">${pName}</p>
                             <p class="pl-[15px]">${pPrice}</p>
                         </div>
-                        <div class="">
+                        <div onclick="updateCartTotal(${-pPrice},'cart-item-id-${i}')">
                             <i class="fa-solid fa-xmark text-red-600"></i>
                         </div>
                     </div>
@@ -46,13 +64,11 @@ const addCartItem = (pName, pPrice) =>{
     `;
     cartContainer.appendChild(cartItem);
     // add sum in total
-    const cartTotal = document.getElementById("cart-total");
-    const currBalance = parseInt(cartTotal.innerText);
-    const newBalance = currBalance+pPrice;
-    cartTotal.innerText=newBalance;
-    
-
-    
+    updateCartTotal(pPrice, `"cart-item-id-${i}"`);
+    // const cartTotal = document.getElementById("cart-total");
+    // const currBalance = parseInt(cartTotal.innerText);
+    // const newBalance = currBalance+pPrice;
+    // cartTotal.innerText=newBalance;   
 
 };
 
