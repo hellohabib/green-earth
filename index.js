@@ -26,6 +26,36 @@ const activateCatagory = (id)=>{
     liToActivate.classList.add("cagetory-selected");
 };
 
+const addCartItem = (pName, pPrice) =>{
+    //
+    const cartContainer = document.getElementById("cart-container");
+    //
+    const cartItem =document.createElement("div");
+    cartItem.innerHTML=`
+    
+    <div id="cart-item" class="flex justify-between items-center bg-[#8abf9e] w-full p-[5px] rounded-2xl mt-[5px]">
+                        <div class="">
+                            <p class="font-bold pl-[15px]">${pName}</p>
+                            <p class="pl-[15px]">${pPrice}</p>
+                        </div>
+                        <div class="">
+                            <i class="fa-solid fa-xmark text-red-600"></i>
+                        </div>
+                    </div>
+    
+    `;
+    cartContainer.appendChild(cartItem);
+    // add sum in total
+    const cartTotal = document.getElementById("cart-total");
+    const currBalance = parseInt(cartTotal.innerText);
+    const newBalance = currBalance+pPrice;
+    cartTotal.innerText=newBalance;
+    
+
+    
+
+};
+
 const loadPlantDetail = (plantId) => {
     const url = `https://openapi.programming-hero.com/api/plant/${plantId}`;
     fetch(url).then((r) => r.json()).then((d) => {
@@ -124,14 +154,18 @@ const displayPlants = (plants) => {
                         </div>
                     </div>
                     <div><!--card-button-->
-                        <button class="bg-[#15803d] text-white p-2 mt-2.5 rounded-2xl w-full">Add to Cart</button>
-
+                        <button id="plant-id-${element.id}" 
+                        onclick="addCartItem('${element.name}',${element.price})"
+                        class="bg-[#15803d] text-white p-2 mt-2.5 rounded-2xl w-full">Add to Cart</button>
                     </div>
                 </div>
                 <!--card-1-end-->        
         `;
+
         plantsContainer.appendChild(plantDiv);
-    })
+    });
 
 };
+
+
 loadPlants();
