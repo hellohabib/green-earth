@@ -1,4 +1,5 @@
 
+// spinner
 const manageSpinner=(status)=>{
     if(status==true){
         document.getElementById("spinner").classList.remove("hidden");
@@ -8,7 +9,7 @@ const manageSpinner=(status)=>{
         document.getElementById("spinner").classList.add("hidden");
     }
 };
-
+// catagory
 const loadCategories = () => {
     fetch("https://openapi.programming-hero.com/api/categories")
         .then(r => r.json())
@@ -16,7 +17,7 @@ const loadCategories = () => {
             displayCategories(d.categories);
         });
 };
-
+//catagory wise plant
 const loadCategoryWisePlant = (id) => {
     manageSpinner(true);
     const url = `https://openapi.programming-hero.com/api/category/${id}`
@@ -24,7 +25,7 @@ const loadCategoryWisePlant = (id) => {
         .then(r => r.json())
         .then(d => displayPlants(d.plants))
 };
-
+// activate category
 const activateCatagory = (id)=>{        
     const liToRemoveActivate = document.querySelectorAll(".category-comm-class-name");    
     liToRemoveActivate.forEach((element)=>{
@@ -37,6 +38,7 @@ const activateCatagory = (id)=>{
 
 const updateCartTotal = (itemPrice, cartId) =>{
     if(itemPrice<0){
+        alert(`"Item is deleted from the cart"`);
         const cartItem = document.getElementById(cartId);
             cartItem.remove();
         }
@@ -50,6 +52,8 @@ const updateCartTotal = (itemPrice, cartId) =>{
 
 let i=0;
 const addCartItem = (pName, pPrice) =>{
+    //
+    alert(`"${pName} is added to the cart"`);
     //
     i++;
     const cartContainer = document.getElementById("cart-container");
@@ -72,13 +76,7 @@ const addCartItem = (pName, pPrice) =>{
     
     `;
     cartContainer.appendChild(cartItem);
-    // add sum in total
     updateCartTotal(pPrice, `"cart-item-id-${i}"`);
-    // const cartTotal = document.getElementById("cart-total");
-    // const currBalance = parseInt(cartTotal.innerText);
-    // const newBalance = currBalance+pPrice;
-    // cartTotal.innerText=newBalance;   
-
 };
 
 const loadPlantDetail = (plantId) => {
@@ -115,8 +113,6 @@ const displayCategories = (categories) => {
         const categoryLi = document.createElement("li");
         categoryLi.textContent = liText;
         categoryLi.className = "category-comm-class-name cagetory-normal";
-        // categoryLi.className = "cat-comm-class-name text-[#1f2937] font-semibold text-center hover:bg-[#15803d] hover:text-white p-2 rounded-[5px] mr-[10px]";
-        //cataId="category-id-" + liId;
         cataId=`category-id-${element.id}`;
         categoryLi.id = cataId;
         categoryLi.addEventListener("click", () => {
