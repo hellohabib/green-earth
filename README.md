@@ -1,6 +1,7 @@
-#7) Create a README file to answer the following question-
+# 7) Create a README file to answer the following question-
 
 ##1) What is the difference between var, let, and const?
+
 ###(ক) var কে বার বার ডিক্লিয়ার করা যায় এবং ভ্যালুও চেঞ্জ করা যায়।  let শুধু একবার ডিক্লিয়ার করা যায় এবং ভ্যালুও চেঞ্জ করা যায়।  const শুধু একবার ডিক্লিয়ার করা যায় এবং ভ্যালু চেঞ্জ করা যায় না।
 ###(খ) var ডিক্লিয়ার করার আগে ব্যবহার করলে undefined দেখায়, কিন্তু let এববং const ডিক্লিয়ার করার আগে ব্যবহার করলে error দেখায়।
 ###(গ) var কে ফাংশনের মধ্যের কোন ব্লকের মধ্যে ডিক্লিয়ার করলে তা পুরা ফাংশন জুড়েই ব্যবহার করা যায় কিন্ত let এববং const শুধুমাত্র ওই ব্লকের মদ্যেই ব্যবহার করা যায়, ব্লকের বাইরে ব্যবহার করা যায় না।
