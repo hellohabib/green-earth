@@ -1,6 +1,14 @@
-// =============================
-//          Load Categories
-// =============================
+
+const manageSpinner=(status)=>{
+    if(status==true){
+        document.getElementById("spinner").classList.remove("hidden");
+        document.getElementById("plant-caontainer").classList.add("hidden");
+    } else {
+        document.getElementById("plant-caontainer").classList.remove("hidden");
+        document.getElementById("spinner").classList.add("hidden");
+    }
+};
+
 const loadCategories = () => {
     fetch("https://openapi.programming-hero.com/api/categories")
         .then(r => r.json())
@@ -10,6 +18,7 @@ const loadCategories = () => {
 };
 
 const loadCategoryWisePlant = (id) => {
+    manageSpinner(true);
     const url = `https://openapi.programming-hero.com/api/category/${id}`
     fetch(url)
         .then(r => r.json())
@@ -125,6 +134,7 @@ loadCategories();
 //          Load Plants
 // =============================
 const loadPlants = () => {
+    manageSpinner(true);
     fetch("https://openapi.programming-hero.com/api/plants")
         .then(r => r.json())
         .then(d => displayPlants(d.plants));
@@ -180,6 +190,7 @@ const displayPlants = (plants) => {
 
         plantsContainer.appendChild(plantDiv);
     });
+    manageSpinner(false);
 
 };
 
